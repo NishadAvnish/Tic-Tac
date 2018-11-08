@@ -1,7 +1,10 @@
 package com.example.avnish.tictoc;
 
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.Fragment;
@@ -10,6 +13,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,7 +23,7 @@ import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    ImageView img;
     int arr[] = {2, 2, 2, 2, 2, 2, 2, 2, 2};
     //0->yellow,1->red
     //1,3
@@ -32,11 +36,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout);
 
+
     }
 
     public void getin(View view) {
         TextView txtvw=(TextView)findViewById(R.id.textview);
-        ImageView img = (ImageView) view;
+        img = (ImageView) view;
         int imageId = Integer.parseInt(img.getTag().toString());
         img.setTranslationZ(-1000f);
 
@@ -53,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 if(check()==true){
                     //yellow win
                     Toast.makeText(this,"Yellow player win",Toast.LENGTH_SHORT).show();
-                    dialog1(MainActivity.this,1);
+                    dialog1(1);
 
 
                 }
@@ -70,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 if(check()==true){
                     //red win
                     Toast.makeText(this,"Red player win",Toast.LENGTH_SHORT).show();
-                    dialog1(MainActivity.this,3);
+                    dialog1(3);
                 }
                 activeplayer = 0;
             }
@@ -104,10 +109,41 @@ public class MainActivity extends AppCompatActivity {
      return false;
     }
 
-    public void dialog1(Context c,int i) {
-       dialog d=new dialog(c,i);
-       d.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-       d.setCancelable(false);
-       d.show();
+    public void dialog1(int i) {
+        final Dialog d=new Dialog(MainActivity.this);
+        d.setContentView(R.layout.activity_dialog);
+        d.setCancelable(false);
+        d.show();
+        Button playnext=(Button)d.findViewById(R.id.playagain);
+        TextView wintxt=(TextView)d.findViewById(R.id.wintext);
+
+        playnext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LinearLayout l1= findViewById(R.id.l1);
+                LinearLayout l2= findViewById(R.id.l2);
+                LinearLayout l3= findViewById(R.id.l3);
+
+                for(int i=0;i<9;i++){
+                    arr[i]=2;
+                }
+
+                
+             //to reset the images after win
+                for(int i=0;i<l1.getChildCount();i++){
+                    ((ImageView)l1.getChildAt(i)).setImageResource(0);
+                }
+                for(int i=0;i<l2.getChildCount();i++){
+                    ((ImageView)l2.getChildAt(i)).setImageResource(0);
+                }
+                for(int i=0;i<l3.getChildCount();i++){
+                    ((ImageView)l3.getChildAt(i)).setImageResource(0);
+                }
+
+                img.setTranslationZ(-1000f);
+                d.cancel();
+            }
+        });
+
     }
 }
