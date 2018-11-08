@@ -1,14 +1,22 @@
 package com.example.avnish.tictoc;
 
 
+import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,9 +32,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout);
 
-        for(int gamecheck[]:gamecheck){
-            Log.e("value", String.valueOf(gamecheck));
-        }
     }
 
     public void getin(View view) {
@@ -48,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
                 if(check()==true){
                     //yellow win
                     Toast.makeText(this,"Yellow player win",Toast.LENGTH_SHORT).show();
+                    dialog1(MainActivity.this,1);
+
+
                 }
                 activeplayer = 1;
 
@@ -61,7 +69,8 @@ public class MainActivity extends AppCompatActivity {
                 img.animate().translationZBy(1000f).rotation(360).setDuration(2000);
                 if(check()==true){
                     //red win
-                    Toast.makeText(this,"RED player win",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,"Red player win",Toast.LENGTH_SHORT).show();
+                    dialog1(MainActivity.this,3);
                 }
                 activeplayer = 0;
             }
@@ -93,5 +102,12 @@ public class MainActivity extends AppCompatActivity {
             }
         }
      return false;
+    }
+
+    public void dialog1(Context c,int i) {
+       dialog d=new dialog(c,i);
+       d.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+       d.setCancelable(false);
+       d.show();
     }
 }

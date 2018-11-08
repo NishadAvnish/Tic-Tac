@@ -1,38 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1b5699"
     android:orientation="vertical">
 
+
+
+
     <TextView
         android:id="@+id/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PLAYER"
-        android:textSize="30dp"
-        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
+        android:text="PLAYER"
         android:textColor="#ed0707"
-        />
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:background="#14bfe1"/>
+        android:layout_below="@+id/textview"
+        android:layout_alignParentStart="true"
+        android:background="#14bfe1"
+        android:id="@+id/view"/>
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/board">
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/board"
+        android:layout_below="@+id/view">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="25dp"
             android:layout_marginLeft="8dp"
+            android:layout_marginTop="25dp"
             android:layout_marginRight="8dp"
             android:orientation="vertical">
 
@@ -48,7 +57,7 @@
                     android:layout_height="120dp"
                     android:layout_weight="1"
                     android:onClick="getin"
-                    android:tag="0"/>
+                    android:tag="0" />
 
                 <ImageView
                     android:id="@+id/image2"
@@ -56,7 +65,7 @@
                     android:layout_height="120dp"
                     android:layout_weight="1"
                     android:onClick="getin"
-                    android:tag="1"/>
+                    android:tag="1" />
 
                 <ImageView
                     android:id="@+id/image3"
@@ -64,7 +73,7 @@
                     android:layout_height="120dp"
                     android:layout_weight="1"
                     android:onClick="getin"
-                    android:tag="2"/>
+                    android:tag="2" />
             </LinearLayout>
 
             <LinearLayout
@@ -79,7 +88,7 @@
                     android:layout_height="120dp"
                     android:layout_weight="1"
                     android:onClick="getin"
-                    android:tag="3"/>
+                    android:tag="3" />
 
                 <ImageView
                     android:id="@+id/image5"
@@ -87,7 +96,7 @@
                     android:layout_height="120dp"
                     android:layout_weight="1"
                     android:onClick="getin"
-                    android:tag="4"/>
+                    android:tag="4" />
 
                 <ImageView
                     android:id="@+id/image6"
@@ -95,7 +104,7 @@
                     android:layout_height="120dp"
                     android:layout_weight="1"
                     android:onClick="getin"
-                    android:tag="5"/>
+                    android:tag="5" />
             </LinearLayout>
 
             <LinearLayout
@@ -110,7 +119,7 @@
                     android:layout_height="120dp"
                     android:layout_weight="1"
                     android:onClick="getin"
-                    android:tag="6"/>
+                    android:tag="6" />
 
                 <ImageView
                     android:id="@+id/image8"
@@ -118,7 +127,7 @@
                     android:layout_height="120dp"
                     android:layout_weight="1"
                     android:onClick="getin"
-                    android:tag="7"/>
+                    android:tag="7" />
 
                 <ImageView
                     android:id="@+id/image9"
@@ -126,9 +135,9 @@
                     android:layout_height="120dp"
                     android:layout_weight="1"
                     android:onClick="getin"
-                    android:tag="8"/>
+                    android:tag="8" />
             </LinearLayout>
         </LinearLayout>
-    </TableLayout>
 
-</LinearLayout>
+    </TableLayout>
+</RelativeLayout>

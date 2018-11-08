@@ -16,6 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".fragment" />
+        <activity android:name=".dialog"></activity>
     </application>
 
 </manifest>
