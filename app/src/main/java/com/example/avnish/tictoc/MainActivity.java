@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -62,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
 
 
                 }
+                if(draw()==9&&check()==false){
+                    dialog1(4);
+                }
                 activeplayer = 1;
 
             }
@@ -77,6 +81,10 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(this,"Red player win",Toast.LENGTH_SHORT).show();
                     dialog1(3);
                 }
+
+                if(draw()==9&&check()==false){
+                    dialog1(4);
+                }
                 activeplayer = 0;
             }
         }
@@ -86,6 +94,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public int draw(){
+        int count=0;
+        for(int i=0;i<9;i++){
+            if(arr[i]!=2)
+            {
+                count+=1;
+            }
+        }
+        if(count==8){
+            return count;
+        }
+        return count;
+    }
 
     //to check is the player win or not
 
@@ -97,7 +118,6 @@ public class MainActivity extends AppCompatActivity {
                 }
 
             }
-
             else
             {
                 if (arr[check[0]] ==3 && arr[check[1]]==3 && arr[check[2]]==3) {
@@ -106,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }
-     return false;
+       return  false;
     }
 
     public void dialog1(int i) {
@@ -116,13 +136,27 @@ public class MainActivity extends AppCompatActivity {
         d.show();
         Button playnext=(Button)d.findViewById(R.id.playagain);
         TextView wintxt=(TextView)d.findViewById(R.id.wintext);
+        TextView head=(TextView)d.findViewById(R.id.text1);
+
+        if(i==1){
+            wintxt.setText("YELLOW PLAYER");
+        }
+        if(i==3)
+        {
+            wintxt.setText("RED PLAYER");
+        }
+        if(i==4)
+        {
+            wintxt.setText("DRAW");
+            head.setVisibility(View.GONE);
+        }
 
         playnext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LinearLayout l1= findViewById(R.id.l1);
-                LinearLayout l2= findViewById(R.id.l2);
-                LinearLayout l3= findViewById(R.id.l3);
+                TableRow l1= findViewById(R.id.l1);
+                TableRow l2= findViewById(R.id.l2);
+                TableRow l3= findViewById(R.id.l3);
 
                 for(int i=0;i<9;i++){
                     arr[i]=2;
@@ -140,7 +174,6 @@ public class MainActivity extends AppCompatActivity {
                     ((ImageView)l3.getChildAt(i)).setImageResource(0);
                 }
 
-                img.setTranslationZ(-1000f);
                 d.cancel();
             }
         });

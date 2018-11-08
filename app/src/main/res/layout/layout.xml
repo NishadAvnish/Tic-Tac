@@ -37,20 +37,14 @@
         android:background="@drawable/board"
         android:layout_below="@+id/view">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginRight="8dp"
-            android:orientation="vertical">
 
-            <LinearLayout
+            <TableRow
                 android:id="@+id/l1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_marginTop="10dp"
+                >
 
                 <ImageView
                     android:id="@+id/image1"
@@ -75,14 +69,15 @@
                     android:layout_weight="1"
                     android:onClick="getin"
                     android:tag="2" />
-            </LinearLayout>
+            </TableRow>
 
-            <LinearLayout
+            <TableRow
                 android:id="@+id/l2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_marginTop="10dp"
+                >
 
                 <ImageView
                     android:id="@+id/image4"
@@ -107,14 +102,16 @@
                     android:layout_weight="1"
                     android:onClick="getin"
                     android:tag="5" />
-            </LinearLayout>
+            </TableRow>
 
-            <LinearLayout
+            <TableRow
                 android:id="@+id/l3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_marginTop="20dp"
+
+               >
 
                 <ImageView
                     android:id="@+id/image7"
@@ -139,8 +136,8 @@
                     android:layout_weight="1"
                     android:onClick="getin"
                     android:tag="8" />
-            </LinearLayout>
-        </LinearLayout>
+            </TableRow>
+
 
     </TableLayout>
 </RelativeLayout>
